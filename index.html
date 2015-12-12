@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a>
+						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -196,6 +196,105 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java设计模式之策略模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/19/Java设计模式之策略模式/" class="article-date">
+  	<time datetime="2015-11-19T15:07:43.000Z" itemprop="datePublished">2015-11-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/19/Java设计模式之策略模式/">Java设计模式-策略设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java设计模式-策略模式">Java设计模式-策略模式</h1><p>策略模式是解决某一方案的时候，方案具体的某一个实现如果有多种实现方式，那么将该实现方式定义为一个策略接口，其中的每一种实现都是一种具体的策略，这样定义之后我们可以针对需求的变化切换相应的策略即可。</p>
+<h2 id="策略模式的应用场景">策略模式的应用场景</h2><ol>
+<li>多个类只区别在表现行为不同，可以使用Strategy模式，在运行时动态选择具体要执行的行为。</li>
+<li>需要在不同情况下使用不同的策略(算法)，或者策略还可能在未来用其它方式来实现。</li>
+<li>对客户隐藏具体策略(算法)的实现细节，彼此完全独立。</li>
+</ol>
+<p><img src="/images/strategy.png" alt="Alt text"><br>在这个策略模式当中，我们假设我们是一家生产玩具鸭子的生产厂商。我们的鸭子就会飞会叫，但是不同的鸭子它的发出的声音和飞行模式都是不一样的，我们定义了一个抽象的鸭子类Duck、飞行策略接口以及声音策略接口。<br><strong>定义的鸭子抽象类:</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Duck</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> FlyingStragety flyingStragety;</span><br><span class="line">	<span class="keyword">private</span> SoundStrategy soundStragety;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		soundStragety.quack();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">display</span>(<span class="params"></span>)</span>;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		flyingStragety.performFly();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlyingStragety</span>(<span class="params">FlyingStragety flyingStragety</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.flyingStragety = flyingStragety;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSoundStragety</span>(<span class="params">SoundStrategy soundStragety</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.soundStragety = soundStragety;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>定义鸭子的声音策略接口</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">SoundStrategy</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>定义鸭子的飞行策略接口</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">FlyingStragety</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>针对鸭子的飞行功能，我们要生产出专门给小孩子玩的FlyNoWay(不会飞)的鸭子，给成人玩的FlyWithRocket(遥控火箭飞行)的鸭子，给动物园展示的FlyWithWing(翅膀飞行)的鸭子。<br><strong>不会飞的策略</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyNoWay</span> <span class="keyword">implements</span> <span class="title">FlyingStragety</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"I'm not flying....."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>翅膀飞行的策略</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyWithWing</span> <span class="keyword">implements</span> <span class="title">FlyingStragety</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"振翅高飞...."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>火箭飞行的策略</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyWithRocket</span> <span class="keyword">implements</span> <span class="title">FlyingStragety</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"用火箭飞行...."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>针对鸭子的叫声功能，我们发现有SoundNoWay(不会叫)、SoundWithMouse(嘎嘎叫)、SoundWithRobdDuck(噶~噶~叫)、SoundWithWithWIfi(利用无线电叫)四种声音策略需求。<br><strong>不会发声的策略</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SoundNoWay</span> <span class="keyword">implements</span> <span class="title">SoundStrategy</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"I'm not quack...."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>嘎嘎嘎的声音策略</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SoundWithMouse</span> <span class="keyword">implements</span> <span class="title">SoundStrategy</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"嘎嘎嘎"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>嘎~嘎~嘎~的声音策略</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SoundWithRobdDuck</span> <span class="keyword">implements</span> <span class="title">SoundStrategy</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"嘎~嘎~噶~"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>wifi发声的声音策略</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SoundWithWifi</span> <span class="keyword">implements</span> <span class="title">SoundStrategy</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"101010101010101"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有了前期的飞行功能和声音功能的策略之后，针对我们的产品定位，可以两两组合生产我们的产品我们我们需要需要生产专门陪伴小孩子玩的不会飞行也不会发出声音高的BigYellowDuck(大黄鸭)、会用翅膀飞行并且会嘎嘎噶叫的BlackDuck(大黑鸭)、放在动物园门口展示的不会飞行只会嘎～嘎～噶～叫的RobdDuck(橡胶鸭)、研究太空用wifi发声并且火箭飞行的RobdDuck(火箭鸭)以及嘎嘎嘎叫会飞行的WhiteDuck(大白鸭)五类鸭子。<br>大<br><strong>大黄鸭</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">BigYellowDuck</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Duck</span>&#123;</span></span><br><span class="line">	public <span class="type">BigYellowDuck</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">super</span>.setFlyingStragety(<span class="keyword">new</span> <span class="type">FlyNoWay</span>());</span><br><span class="line">		<span class="keyword">super</span>.setSoundStragety(<span class="keyword">new</span> <span class="type">SoundNoWay</span>());</span><br><span class="line">	&#125;</span><br><span class="line">	public void display() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"我是大黄鸭"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>大黑鸭</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">BlackDuck</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Duck</span>&#123;</span></span><br><span class="line">	public <span class="type">BlackDuck</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>.setFlyingStragety(<span class="keyword">new</span> <span class="type">FlyWithWing</span>());</span><br><span class="line">		<span class="keyword">super</span>.setSoundStragety(<span class="keyword">new</span> <span class="type">SoundWithMouse</span>());</span><br><span class="line">	&#125;</span><br><span class="line">	public void display() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"我是黑鸭子"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>橡胶鸭</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">RobdDuck</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Duck</span> &#123;</span></span><br><span class="line">	public <span class="type">RobdDuck</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">super</span>.setFlyingStragety(<span class="keyword">new</span> <span class="type">FlyNoWay</span>());</span><br><span class="line">		<span class="keyword">super</span>.setSoundStragety(<span class="keyword">new</span> <span class="type">SoundWithRobdDuck</span>());</span><br><span class="line">	&#125;</span><br><span class="line">	public void display() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"我是橡胶鸭"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>太空鸭</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SpaceDuck</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Duck</span> &#123;</span></span><br><span class="line">	public <span class="type">SpaceDuck</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">super</span>.setFlyingStragety(<span class="keyword">new</span> <span class="type">FlyWithRocket</span>());</span><br><span class="line">		<span class="keyword">super</span>.setSoundStragety(<span class="keyword">new</span> <span class="type">SoundWithWifi</span>());</span><br><span class="line">	&#125;</span><br><span class="line">	public void display() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"我是太空鸭..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>大白鸭</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">WhiteDuck</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Duck</span> &#123;</span></span><br><span class="line">	public <span class="type">WhiteDuck</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">super</span>.setFlyingStragety(<span class="keyword">new</span> <span class="type">FlyWithWing</span>());</span><br><span class="line">		<span class="keyword">super</span>.setSoundStragety(<span class="keyword">new</span> <span class="type">SoundWithMouse</span>());</span><br><span class="line">	&#125;</span><br><span class="line">	public void display() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"我是白鸭子"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们根据需求定义了一系列的产品需求之后，其实针对飞行和声音两种策略可以给出多种多样的组合，声音和飞行的策略也可以持续扩展，所有的产品仅仅只是策略的不一样而已。</p>
+<h2 id="总结">总结</h2><p>通过该策略模式例子我们可以看到，我们利用策略模式能够很好的解决需求变化的问题，当在编写程序的时候，针对从某几种特定方案中选择一种的或者预计后期需求会改动的模块可以用该模式以不变应万变。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Strategy/">Strategy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/策略设计模式/">策略设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+        
+
+  
     <article id="post-学习Grunt" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -269,6 +368,87 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grunt/">grunt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+	</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+        
+
+  
+    <article id="post-Java设计模式之单例设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/17/Java设计模式之单例设计模式/" class="article-date">
+  	<time datetime="2015-11-17T14:01:18.000Z" itemprop="datePublished">2015-11-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/17/Java设计模式之单例设计模式/">Java设计模式之单例设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##学习总结<br>最近在学习Java的设计模式，一直没有来得及总结所学习的东西，现在准备把所学习的设计模式一一总结。</p>
+<p>##<a href="http://sourcecodemania.com/singleton-design-pattern/" target="_blank" rel="external">单例设计模式</a><br>单例设计模式是解决保证在JVM中一个类的永远只存在一个对象被外部访问，单例模式是设计模式中最简单的形式之一。这一模式的目的是使得类的一个对象成为系统中的唯一实例。要实现这一点，可以从客户端对其进行实例化开始。因此需要用一种只允许生成对象类的唯一实例的机制，“阻止”所有想要生成对象的访问。使用工厂方法来限制实例化过程。这个方法应该是静态方法（类方法），因为让类的实例去生成另一个唯一实例毫无意义。</p>
+<p><img src="/images/singleton.png" alt="Alt text"><br>单例的写法有两种:懒汉模式和饿汉模式</p>
+<p>###懒汉单例模式<br>懒汉单例模式是最简单高效的的写法，不存在线程安全的问题<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*	懒汉单例模式</span><br><span class="line">**/<span class="keyword"></span><br><span class="line">public</span> class Singleton &#123;</span><br><span class="line"><span class="keyword">	private</span><span class="keyword"> static</span> Singleton<span class="instruction"> instance </span>=<span class="instruction"> new </span>Singleton(<span class="function">)</span>;</span><br><span class="line"><span class="keyword">	private</span><span class="function"> Singleton(</span><span class="function">)</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">	public</span><span class="keyword"> static</span> Singleton<span class="function"> getInstance(</span><span class="function">)</span> &#123;</span><br><span class="line">	<span class="instruction">	return </span>instance;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###饿汉单例模式<br>饿汉单例模式在获取单例的时候存在并发的时候可能会获取多个对象实例，肯能存在线程安全问题，因此需要加线程同步<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*	饿汉单例模式</span><br><span class="line">**/<span class="keyword"></span><br><span class="line">public</span> class Singleton&#123;</span><br><span class="line"><span class="keyword">	private</span><span class="keyword"> static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">	private</span><span class="function"> Singleton(</span><span class="function">)</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">	public</span><span class="keyword"> static</span> Singleton<span class="function"> getInstance(</span><span class="function">)</span> &#123;</span><br><span class="line">		if(instance == null<span class="function">)</span> &#123;</span><br><span class="line">			synchronized(Singleton.class<span class="function">)</span> &#123;</span><br><span class="line">				if(instance == null<span class="function">)</span> &#123;</span><br><span class="line">				<span class="instruction">	instance </span>=<span class="instruction"> new </span>Singleton(<span class="function">)</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="instruction">	return </span>instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Singleton/">Singleton</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例设计模式/">单例设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 	</div>
 
       

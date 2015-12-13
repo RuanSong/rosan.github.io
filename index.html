@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a>
+						<a href="/tags/Adapter/" style="font-size: 10px;">Adapter</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数模板设计模式/" style="font-size: 10px;">函数模板设计模式</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/适配器设计模式/" style="font-size: 10px;">适配器设计模式</a>
 					</div>
 				</section>
 				
@@ -196,11 +196,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Java设计模式之策略模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java设计模式之适配器模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/19/Java设计模式之策略模式/" class="article-date">
-  	<time datetime="2015-11-19T15:07:43.000Z" itemprop="datePublished">2015-11-19</time>
+      <a href="/2015/11/25/Java设计模式之适配器模式/" class="article-date">
+  	<time datetime="2015-11-25T13:17:53.000Z" itemprop="datePublished">2015-11-25</time>
 </a>
     </div>
   
@@ -213,7 +213,185 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/19/Java设计模式之策略模式/">Java设计模式-策略设计模式</a>
+      <a class="article-title" href="/2015/11/25/Java设计模式之适配器模式/">Java设计模式之适配器模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>适配器模式简而言之，就是将原本不能和本类兼容的对象通过转换之后换成兼容的对象，之后通过这个转换之后的对象放入本类当中进行接下来的动作。<br><img src="/images/Adapter.png" alt="Alt text"><br>上面这个类图中我们拿笔记本作为例子，现在笔记本都需要充电，我们假设我们的笔记本电源都只能通过三项插座进行充电。我们定义的三项插座的接口和笔记本类如下:<br><strong>三项插座接口</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ThreePlugIf</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerWithThree</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>笔记本实体</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NoteBook</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> ThreePlugIf plug;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NoteBook</span>(<span class="params">ThreePlugIf plug</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.plug = plug;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">charge</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		plug.powerWithThree();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在这个定义里面，我们笔记本通过传入一个三项插座的接口之后，我们的笔记本就可以通过三项接口进行充电了。现在假设我们在外地出差，酒店里提供的就只有两项电源插座，我们需要做的就是找酒店服务员要一个两项插座转三项插座的适配器，这个适配器跟设计模式中的适配器模式非常相似，我们先定义一个两项插座的具体实现:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GBTwoPlug</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerWithTwo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"使用二相电流供电"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="接口实现的方式实现适配器">接口实现的方式实现适配器</h2><p>我们定义两项接口转三项接口的适配器:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoPlugAdapter</span> <span class="keyword">implements</span> <span class="title">ThreePlugIf</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> GBTwoPlug plug;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TwoPlugAdapter</span><span class="params">(GBTwoPlug plug)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.plug = plug;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerWithThree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"通过转化"</span>);</span><br><span class="line">		plug.powerWithTwo();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上适配器代码所示，我们定义一个两项电源插座适配器的类，这个类传进去一个两项适配器的对象，并且去实现三项电源插座的接口，然后在三项电源插座接口的具体实现中去调用两项适配器的对象去完成适配的整个过程。<br>然后我们通过如下方法进行调用适配:<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GBTwoPlug two = <span class="keyword">new</span> GBTwoPlug();</span><br><span class="line">ThreePlugIf three = <span class="keyword">new</span> TwoPlugAdapter(two);</span><br><span class="line">NoteBook <span class="keyword">nb</span> = <span class="keyword">new</span> NoteBook(three);</span><br><span class="line"><span class="keyword">nb</span>.charge();</span><br></pre></td></tr></table></figure></p>
+<h2 id="继承的方式实现的适配器">继承的方式实现的适配器</h2><p>我们发现，这样适配的话每次调用都要先去new一个两项电源插座的对象，然后再去适配，我们是否可以优化这个适配器呢?<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">TwoPlugAdapterExtend</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">GBTwoPlug</span> <span class="title">implements</span> <span class="title">ThreePlugIf</span> &#123;</span></span><br><span class="line">	public void powerWithThree() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"借助继承适配器"</span>);</span><br><span class="line">		<span class="keyword">this</span>.powerWithTwo();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上代码所示，我们通过继承两项插座电源实现的方式去定义了一个两项适配器的类，并且实现了三项电源插座的接口，然后在接口实现中去调用父类的两项适配器去完成适配的动作，这样适配器的拓展就完成了。</p>
+<h2 id="总结">总结</h2><p>通过以上适配器模式的说明，我们发现适配器模式能够将不能在一起工作的对象通过适配转化为可以在一块工作的对象。并且说明了实现适配器的两种方式，一种通过实现接口的方式去实现，另一种是通过继承的方式去实现。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Adapter/">Adapter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/适配器设计模式/">适配器设计模式</a></li></ul>
+	</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+        
+
+  
+    <article id="post-Java设计模式之函数模板设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/23/Java设计模式之函数模板设计模式/" class="article-date">
+  	<time datetime="2015-11-23T13:45:21.000Z" itemprop="datePublished">2015-11-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/23/Java设计模式之函数模板设计模式/">Java设计模式之函数模板设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>模板函数设计模式，顾名思义就是在函数模板中定义一套标准，在该机制中定义好做一件事情的步骤和顺序，标准的具体实现由具体的实现机制去做。具体到面向对象当中就是设计一个抽象父类，将业务逻辑的步骤抽象成一个一个的方法，针对公共的模板方法设置为私有，针对特定的方法由子类去实现，并且由父类提供一个公有的调度方法去调度每一个步骤的顺序，子类调用父类的调度方法完成整个方法的调度。<br><img src="/images/template.png" alt="Alt text"></p>
+<p>我们拿泡饮料来打比方，假设我们泡饮料要经过四个步骤才能完成：</p>
+<ol>
+<li>将水煮开(boildWater)</li>
+<li>泡饮料(brew)</li>
+<li>将饮料导入杯中(pourInCup)</li>
+<li>加入调料(addCondiments)<br>其中对于泡饮料来说，将水烧开(boidWater)和将水倒入杯中(pourInCup)这个都是公开的，因此我们在父类中针对泡饮料的四个步骤给出泡饮料的四个方法如下：<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">brew</span>(<span class="params"></span>)</span>;</span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addCondiments</span>(<span class="params"></span>)</span>;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pourInCup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	System.<span class="keyword">out</span>.println(<span class="string">"将饮料倒入杯中"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">boidWater</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	System.<span class="keyword">out</span>.println(<span class="string">"将水煮沸"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>针对泡饮料的步骤，我们定义一个准备泡饮料的函数模板:<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public final void <span class="function">prepareBeverageTemplate</span>() &#123;</span><br><span class="line">		<span class="comment">// 1.将水煮开</span></span><br><span class="line">		<span class="function">boidWater</span>();</span><br><span class="line">		<span class="comment">// 2.泡制饮料</span></span><br><span class="line">		<span class="function">brew</span>();</span><br><span class="line">		<span class="comment">// 3.将饮料导入杯中</span></span><br><span class="line">		<span class="function">pourInCup</span>();</span><br><span class="line">		<span class="comment">// 4.加入调料</span></span><br><span class="line">		<span class="function">addCondiments</span>();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样一个针对泡饮料的抽象类的函数模板类就出来了:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">RefreshBeverage</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> final <span class="keyword">void</span> <span class="title">prepareBeverageTemplate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		boidWater();</span><br><span class="line">		brew();</span><br><span class="line">		pourInCup();</span><br><span class="line">		addCondiments();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">brew</span>(<span class="params"></span>)</span>;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addCondiments</span>(<span class="params"></span>)</span>;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pourInCup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"将饮料倒入杯中"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">boidWater</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"将水煮沸"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>紧接着，我们针对泡咖啡和泡茶提供两种具体的实现，由于茶和咖啡都属于饮料，因此我们泡茶和泡咖啡的步骤是一样的。但是泡茶的话我们一般用80度的热水泡30分钟，并且在茶泡好倒入杯子之后加入柠檬，这样泡出的茶才更可口。而泡咖啡则直接用100度的开水泡，泡完之后倒入杯子加入牛奶或糖之后咖啡才更可口，因此针对牛奶和咖啡的泡制方法，我们提供两种具体实现:<br><strong>泡茶</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Cup</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">RefreshBeverage</span> &#123;</span></span><br><span class="line">	<span class="keyword">protected</span> void brew() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"用80度的熱水浸泡茶葉，5分鐘"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">protected</span> void addCondiments() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"将柠檬加入茶中"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>泡咖啡</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Coffee</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">RefreshBeverage</span> &#123;</span></span><br><span class="line">	<span class="keyword">protected</span> void brew() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"用沸水冲泡咖啡"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">protected</span> void addCondiments() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"在咖啡中添加糖或牛奶"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是，喝茶的时候，有的人喜欢不喜欢加糖，有的人喜欢加糖，因此我们针对这个需求则需要在函数模板当中设置一个钩子方法，针对该钩子方法的返回结果去判断是否要加糖。<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isCustomerWantsCondiments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在我们的抽象父类的调度方法当中，我们通过这个钩子方法去判断是否需要加糖<br><figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isCustomerWantsCondiments<span class="literal">()</span>) &#123;</span><br><span class="line">			addCondiments<span class="literal">()</span>;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于不喜欢泡茶加糖的人来说，我们定义一种不加糖的茶，这样的话我们可以定义这种不加糖的茶<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CubeCup</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Cup</span> &#123;</span></span><br><span class="line">	<span class="keyword">protected</span> boolean isCustomerWantsCondiments() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们就完成了了不加糖的茶的泡制方法了</p>
+<h2 id="总结">总结</h2><p>函数模板设计模式适用于业务逻辑定义好的场景，针对公有的方法提供具体实现，针对特定的方法由子类去实现，子类不需要调用函数模板中定义的场景的话，只需设置一个钩子函数即可完成灵活的切换。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Template/">Template</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数模板设计模式/">函数模板设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+        
+
+  
+    <article id="post-Java设计模式之策略模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/21/Java设计模式之策略模式/" class="article-date">
+  	<time datetime="2015-11-21T15:07:43.000Z" itemprop="datePublished">2015-11-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/21/Java设计模式之策略模式/">Java设计模式之策略设计模式</a>
     </h1>
   
 
@@ -257,6 +435,87 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Strategy/">Strategy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/策略设计模式/">策略设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+        
+
+  
+    <article id="post-Java设计模式之单例设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/19/Java设计模式之单例设计模式/" class="article-date">
+  	<time datetime="2015-11-19T14:01:18.000Z" itemprop="datePublished">2015-11-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/19/Java设计模式之单例设计模式/">Java设计模式之单例设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##学习总结<br>最近在学习Java的设计模式，一直没有来得及总结所学习的东西，现在准备把所学习的设计模式一一总结。</p>
+<p>##<a href="http://sourcecodemania.com/singleton-design-pattern/" target="_blank" rel="external">单例设计模式</a><br>单例设计模式是解决保证在JVM中一个类的永远只存在一个对象被外部访问，单例模式是设计模式中最简单的形式之一。这一模式的目的是使得类的一个对象成为系统中的唯一实例。要实现这一点，可以从客户端对其进行实例化开始。因此需要用一种只允许生成对象类的唯一实例的机制，“阻止”所有想要生成对象的访问。使用工厂方法来限制实例化过程。这个方法应该是静态方法（类方法），因为让类的实例去生成另一个唯一实例毫无意义。</p>
+<p><img src="/images/singleton.png" alt="Alt text"><br>单例的写法有两种:懒汉模式和饿汉模式</p>
+<p>###懒汉单例模式<br>懒汉单例模式是最简单高效的的写法，不存在线程安全的问题<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*	懒汉单例模式</span><br><span class="line">**/<span class="keyword"></span><br><span class="line">public</span> class Singleton &#123;</span><br><span class="line"><span class="keyword">	private</span><span class="keyword"> static</span> Singleton<span class="instruction"> instance </span>=<span class="instruction"> new </span>Singleton(<span class="function">)</span>;</span><br><span class="line"><span class="keyword">	private</span><span class="function"> Singleton(</span><span class="function">)</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">	public</span><span class="keyword"> static</span> Singleton<span class="function"> getInstance(</span><span class="function">)</span> &#123;</span><br><span class="line">	<span class="instruction">	return </span>instance;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###饿汉单例模式<br>饿汉单例模式在获取单例的时候存在并发的时候可能会获取多个对象实例，肯能存在线程安全问题，因此需要加线程同步<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*	饿汉单例模式</span><br><span class="line">**/<span class="keyword"></span><br><span class="line">public</span> class Singleton&#123;</span><br><span class="line"><span class="keyword">	private</span><span class="keyword"> static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">	private</span><span class="function"> Singleton(</span><span class="function">)</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">	public</span><span class="keyword"> static</span> Singleton<span class="function"> getInstance(</span><span class="function">)</span> &#123;</span><br><span class="line">		if(instance == null<span class="function">)</span> &#123;</span><br><span class="line">			synchronized(Singleton.class<span class="function">)</span> &#123;</span><br><span class="line">				if(instance == null<span class="function">)</span> &#123;</span><br><span class="line">				<span class="instruction">	instance </span>=<span class="instruction"> new </span>Singleton(<span class="function">)</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="instruction">	return </span>instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Singleton/">Singleton</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例设计模式/">单例设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 	</div>
 
       
@@ -368,87 +627,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grunt/">grunt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-	</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-        var yiliaConfig = {
-        fancybox: true,
-        mathjax: true,
-        animate: true,
-        isHome: true,
-        isPost: false,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        open_in_new: false
-        }
-        </script>
-        
-
-  
-    <article id="post-Java设计模式之单例设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/17/Java设计模式之单例设计模式/" class="article-date">
-  	<time datetime="2015-11-17T14:01:18.000Z" itemprop="datePublished">2015-11-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/17/Java设计模式之单例设计模式/">Java设计模式之单例设计模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##学习总结<br>最近在学习Java的设计模式，一直没有来得及总结所学习的东西，现在准备把所学习的设计模式一一总结。</p>
-<p>##<a href="http://sourcecodemania.com/singleton-design-pattern/" target="_blank" rel="external">单例设计模式</a><br>单例设计模式是解决保证在JVM中一个类的永远只存在一个对象被外部访问，单例模式是设计模式中最简单的形式之一。这一模式的目的是使得类的一个对象成为系统中的唯一实例。要实现这一点，可以从客户端对其进行实例化开始。因此需要用一种只允许生成对象类的唯一实例的机制，“阻止”所有想要生成对象的访问。使用工厂方法来限制实例化过程。这个方法应该是静态方法（类方法），因为让类的实例去生成另一个唯一实例毫无意义。</p>
-<p><img src="/images/singleton.png" alt="Alt text"><br>单例的写法有两种:懒汉模式和饿汉模式</p>
-<p>###懒汉单例模式<br>懒汉单例模式是最简单高效的的写法，不存在线程安全的问题<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*	懒汉单例模式</span><br><span class="line">**/<span class="keyword"></span><br><span class="line">public</span> class Singleton &#123;</span><br><span class="line"><span class="keyword">	private</span><span class="keyword"> static</span> Singleton<span class="instruction"> instance </span>=<span class="instruction"> new </span>Singleton(<span class="function">)</span>;</span><br><span class="line"><span class="keyword">	private</span><span class="function"> Singleton(</span><span class="function">)</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">	public</span><span class="keyword"> static</span> Singleton<span class="function"> getInstance(</span><span class="function">)</span> &#123;</span><br><span class="line">	<span class="instruction">	return </span>instance;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<p>###饿汉单例模式<br>饿汉单例模式在获取单例的时候存在并发的时候可能会获取多个对象实例，肯能存在线程安全问题，因此需要加线程同步<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*	饿汉单例模式</span><br><span class="line">**/<span class="keyword"></span><br><span class="line">public</span> class Singleton&#123;</span><br><span class="line"><span class="keyword">	private</span><span class="keyword"> static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">	private</span><span class="function"> Singleton(</span><span class="function">)</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">	public</span><span class="keyword"> static</span> Singleton<span class="function"> getInstance(</span><span class="function">)</span> &#123;</span><br><span class="line">		if(instance == null<span class="function">)</span> &#123;</span><br><span class="line">			synchronized(Singleton.class<span class="function">)</span> &#123;</span><br><span class="line">				if(instance == null<span class="function">)</span> &#123;</span><br><span class="line">				<span class="instruction">	instance </span>=<span class="instruction"> new </span>Singleton(<span class="function">)</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="instruction">	return </span>instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Singleton/">Singleton</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例设计模式/">单例设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 	</div>
 
       

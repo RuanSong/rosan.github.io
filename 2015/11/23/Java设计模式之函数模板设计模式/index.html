@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java设计模式之函数模板设计模式 | Rosan&#39;s Blog |前端|博客|Java|技术分享|生活|Blog</title>
+  <title>Java设计模式之函数模板设计模式 | Rosan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Java设计模式之函数模板设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java设计模式之函数模板设计模式">
 <meta property="og:url" content="http://freejs.cn/2015/11/23/Java设计模式之函数模板设计模式/index.html">
-<meta property="og:site_name" content="Rosan's Blog |前端|博客|Java|技术分享|生活|Blog">
+<meta property="og:site_name" content="Rosan's Blog">
 <meta property="og:description" content="Java设计模式之函数模板设计模式">
 <meta property="og:image" content="http://freejs.cn/images/template.png">
-<meta property="og:updated_time" content="2015-12-12T14:48:12.759Z">
+<meta property="og:updated_time" content="2015-12-13T11:10:48.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式之函数模板设计模式">
 <meta name="twitter:description" content="Java设计模式之函数模板设计模式">
   
-    <link rel="alternative" href="/atom.xml" title="Rosan&#39;s Blog |前端|博客|Java|技术分享|生活|Blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Rosan&#39;s Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -122,7 +122,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Adapter/" style="font-size: 10px;">Adapter</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数模板设计模式/" style="font-size: 10px;">函数模板设计模式</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/适配器设计模式/" style="font-size: 10px;">适配器设计模式</a>
+						<a href="/tags/Adapter/" style="font-size: 10px;">Adapter</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/SimpleFactory/" style="font-size: 10px;">SimpleFactory</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/代理设计模式/" style="font-size: 10px;">代理设计模式</a> <a href="/tags/函数模板设计模式/" style="font-size: 10px;">函数模板设计模式</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/简单工厂模式/" style="font-size: 10px;">简单工厂模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/适配器设计模式/" style="font-size: 10px;">适配器设计模式</a>
 					</div>
 				</section>
 				
@@ -233,7 +233,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>模板函数设计模式，顾名思义就是在函数模板中定义一套标准，在该机制中定义好做一件事情的步骤和顺序，标准的具体实现由具体的实现机制去做。具体到面向对象当中就是设计一个抽象父类，将业务逻辑的步骤抽象成一个一个的方法，针对公共的模板方法设置为私有，针对特定的方法由子类去实现，并且由父类提供一个公有的调度方法去调度每一个步骤的顺序，子类调用父类的调度方法完成整个方法的调度。<br><img src="/images/template.png" alt="Alt text"></p>
+        <p>模板函数设计模式，顾名思义就是在函数模板中定义一套标准，在该机制中定义好做一件事情的步骤和顺序，标准的具体实现由具体的实现机制去做。具体到面向对象当中就是设计一个抽象父类，将业务逻辑的步骤抽象成一个一个的方法，针对公共的模板方法设置为私有，针对特定的方法由子类去实现，并且由父类提供一个公有的调度方法去调度每一个步骤的顺序，子类调用父类的调度方法完成整个方法的调度。</p>
+<h2 id="模板函数设计模式的角色">模板函数设计模式的角色</h2><p>1.抽象类:实现类模板方法，定义了算法的骨架<br>2.具体类:实现抽象类中的抽象方法,已完成的算法</p>
+<h2 id="函数模板设计模式的类图">函数模板设计模式的类图</h2><p><img src="/images/template.png" alt="Alt text"></p>
 <p>我们拿泡饮料来打比方，假设我们泡饮料要经过四个步骤才能完成：</p>
 <ol>
 <li>将水煮开(boildWater)</li>
@@ -286,7 +288,7 @@
 <!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
 <div id="toc" class="toc-article">
 <strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板函数设计模式的角色"><span class="toc-number">1.</span> <span class="toc-text">模板函数设计模式的角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数模板设计模式的类图"><span class="toc-number">2.</span> <span class="toc-text">函数模板设计模式的类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
 </div>
 <style type="text/css">
   .left-col .switch-btn {

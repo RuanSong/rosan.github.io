@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java设计模式之适配器模式 | Rosan&#39;s Blog |前端|博客|Java|技术分享|生活|Blog</title>
+  <title>Java设计模式之适配器模式 | Rosan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Java设计模式-策略设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java设计模式之适配器模式">
 <meta property="og:url" content="http://freejs.cn/2015/11/25/Java设计模式之适配器模式/index.html">
-<meta property="og:site_name" content="Rosan's Blog |前端|博客|Java|技术分享|生活|Blog">
+<meta property="og:site_name" content="Rosan's Blog">
 <meta property="og:description" content="Java设计模式-策略设计模式">
 <meta property="og:image" content="http://freejs.cn/images/Adapter.png">
-<meta property="og:updated_time" content="2015-12-13T04:19:57.889Z">
+<meta property="og:updated_time" content="2015-12-13T11:15:55.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式之适配器模式">
 <meta name="twitter:description" content="Java设计模式-策略设计模式">
   
-    <link rel="alternative" href="/atom.xml" title="Rosan&#39;s Blog |前端|博客|Java|技术分享|生活|Blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Rosan&#39;s Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -122,7 +122,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Adapter/" style="font-size: 10px;">Adapter</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数模板设计模式/" style="font-size: 10px;">函数模板设计模式</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/适配器设计模式/" style="font-size: 10px;">适配器设计模式</a>
+						<a href="/tags/Adapter/" style="font-size: 10px;">Adapter</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/SimpleFactory/" style="font-size: 10px;">SimpleFactory</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/代理设计模式/" style="font-size: 10px;">代理设计模式</a> <a href="/tags/函数模板设计模式/" style="font-size: 10px;">函数模板设计模式</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/简单工厂模式/" style="font-size: 10px;">简单工厂模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/适配器设计模式/" style="font-size: 10px;">适配器设计模式</a>
 					</div>
 				</section>
 				
@@ -233,7 +233,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>适配器模式简而言之，就是将原本不能和本类兼容的对象通过转换之后换成兼容的对象，之后通过这个转换之后的对象放入本类当中进行接下来的动作。<br><img src="/images/Adapter.png" alt="Alt text"><br>上面这个类图中我们拿笔记本作为例子，现在笔记本都需要充电，我们假设我们的笔记本电源都只能通过三项插座进行充电。我们定义的三项插座的接口和笔记本类如下:<br><strong>三项插座接口</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ThreePlugIf</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerWithThree</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>适配器模式简而言之，就是将原本不能和本类兼容的对象通过转换之后换成兼容的对象，之后通过这个转换之后的对象放入本类当中进行接下来的动作。</p>
+<h2 id="适配器模式中的角色">适配器模式中的角色</h2><p>1.目标接口(Target):客户所期待的接口。目标可以是具体的或抽象的类，也可以是接口。<br>2.需要适配的类(Adaptee):需要适配的类或适配器类。<br>3.适配器(Adapter):通过包装一个需要适配的对象，把原接口转换成目标接口.</p>
+<h2 id="适配器模式的类图">适配器模式的类图</h2><p><img src="/images/Adapter.png" alt="Alt text"><br>上面这个类图中我们拿笔记本作为例子，现在笔记本都需要充电，我们假设我们的笔记本电源都只能通过三项插座进行充电。我们定义的三项插座的接口和笔记本类如下:<br><strong>三项插座接口</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ThreePlugIf</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerWithThree</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>笔记本实体</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NoteBook</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> ThreePlugIf plug;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NoteBook</span>(<span class="params">ThreePlugIf plug</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.plug = plug;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">charge</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		plug.powerWithThree();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在这个定义里面，我们笔记本通过传入一个三项插座的接口之后，我们的笔记本就可以通过三项接口进行充电了。现在假设我们在外地出差，酒店里提供的就只有两项电源插座，我们需要做的就是找酒店服务员要一个两项插座转三项插座的适配器，这个适配器跟设计模式中的适配器模式非常相似，我们先定义一个两项插座的具体实现:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GBTwoPlug</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerWithTwo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"使用二相电流供电"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="接口实现的方式实现适配器">接口实现的方式实现适配器</h2><p>我们定义两项接口转三项接口的适配器:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoPlugAdapter</span> <span class="keyword">implements</span> <span class="title">ThreePlugIf</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> GBTwoPlug plug;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TwoPlugAdapter</span><span class="params">(GBTwoPlug plug)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.plug = plug;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerWithThree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"通过转化"</span>);</span><br><span class="line">		plug.powerWithTwo();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -254,6 +256,12 @@
 
 <nav id="article-nav">
   
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2015/11/27/Java设计模式之代理设计模式/">
+        Java设计模式之代理设计模式
+      </a>
+    </div>
+  
   
     <div id="article-nav-older" class="article-nav-title">
       <a href="/2015/11/23/Java设计模式之函数模板设计模式/">
@@ -270,7 +278,7 @@
 <!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
 <div id="toc" class="toc-article">
 <strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#接口实现的方式实现适配器"><span class="toc-number">1.</span> <span class="toc-text">接口实现的方式实现适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承的方式实现的适配器"><span class="toc-number">2.</span> <span class="toc-text">继承的方式实现的适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#适配器模式中的角色"><span class="toc-number">1.</span> <span class="toc-text">适配器模式中的角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适配器模式的类图"><span class="toc-number">2.</span> <span class="toc-text">适配器模式的类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口实现的方式实现适配器"><span class="toc-number">3.</span> <span class="toc-text">接口实现的方式实现适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承的方式实现的适配器"><span class="toc-number">4.</span> <span class="toc-text">继承的方式实现的适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
 </div>
 <style type="text/css">
   .left-col .switch-btn {
@@ -359,14 +367,16 @@
 
   
   
+    
     <div  class="post-nav-button">
-    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2015/11/27/Java设计模式之代理设计模式/" title="上一篇: Java设计模式之代理设计模式">
+    <i class="fa fa-angle-left"></i>
+    </a>
     <a href="/2015/11/23/Java设计模式之函数模板设计模式/" title="下一篇: Java设计模式之函数模板设计模式">
     <i class="fa fa-angle-right"></i>
     </a>
     </div>
   
-    
 
 
 

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>学习Maven构建项目 | Rosan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习Maven构建项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Maven构建项目">
+<meta property="og:url" content="http://freejs.cn/2015/12/01/学习maven构建项目/index.html">
+<meta property="og:site_name" content="Rosan's Blog">
+<meta property="og:description" content="学习Maven构建项目">
+<meta property="og:updated_time" content="2016-01-23T16:43:05.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习Maven构建项目">
+<meta name="twitter:description" content="学习Maven构建项目">
+  
+    <link rel="alternative" href="/atom.xml" title="Rosan&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Rosan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Rosan&#39;s Blog</p>
+		
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="/ruansong@freejs.cn" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Adapter/" style="font-size: 10px;">Adapter</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Observer/" style="font-size: 10px;">Observer</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/SimpleFactory/" style="font-size: 10px;">SimpleFactory</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Strategy/" style="font-size: 10px;">Strategy</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/代理设计模式/" style="font-size: 10px;">代理设计模式</a> <a href="/tags/函数模板设计模式/" style="font-size: 10px;">函数模板设计模式</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单例设计模式/" style="font-size: 10px;">单例设计模式</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/学习笔记/" style="font-size: 15px;">学习笔记</a> <a href="/tags/策略设计模式/" style="font-size: 10px;">策略设计模式</a> <a href="/tags/简单工厂模式/" style="font-size: 10px;">简单工厂模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/适配器设计模式/" style="font-size: 10px;">适配器设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">专注于前端</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Rosan</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Rosan</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Rosan&#39;s Blog</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="/ruansong@freejs.cn" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-学习maven构建项目" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/01/学习maven构建项目/" class="article-date">
+  	<time datetime="2015-12-01T13:23:38.000Z" itemprop="datePublished">2015-12-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习Maven构建项目
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://zh.wikipedia.org/wiki/Apache_Maven" target="_blank" rel="external">Maven</a>是一个项目管理以及自动构建工具，Maven使用称为项目对象模型(Project Object Mode,POM)来配置，基于maven构建项目可以高效的管理第三方的jar包，可以摆脱基于eclipse开发项目手动复制大量jar包以及jar包冲突等尴尬项目开发情景，这里主要记录学习maven一些步骤，方便日后查阅。</p>
+<h2 id="Maven的安装">Maven的安装</h2><p>Maven是由<a href="https://zh.wikipedia.org/wiki/Apache%E8%BD%AF%E4%BB%B6%E5%9F%BA%E9%87%91%E4%BC%9A" target="_blank" rel="external">Apache软件基金会</a>所提供的，因此我们获取maven要到apache的<a href="http://maven.apache.org/" target="_blank" rel="external">maven官网</a>上面去获取maven的安装包。<br>下载完成之后，我们需要将maven加入到系统环境变量当中，并将maven目录下的bin目录映射到系统环境变量的path下，这样我们就可以全局使用maven了。<br>配置好系统环境变量之后，在命令提示符窗口输入<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>-v</span><br></pre></td></tr></table></figure></p>
+<p>如果看到如下信息，说明maven以及安装成功,每个人的机器环境不一样，所以看到的结果也不一定一样<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Apache Maven <span class="number">3.3</span><span class="number">.9</span> (bb52d8502b132ec0a5a3f4c09453c07478323dc5; <span class="number">2015</span>-<span class="number">11</span>-<span class="number">11</span>T00:<span class="number">41</span>:<span class="number">47</span>+<span class="number">08</span>:<span class="number">00</span>)</span><br><span class="line">Maven home: C:\WorkSpace\maven\apache-maven-<span class="number">3.3</span><span class="number">.9</span>\bin\..</span><br><span class="line">Java version: <span class="number">1.8</span><span class="number">.0</span>_60, vendor: Oracle Corporation</span><br><span class="line">Java home: C:\Program Files\Java\jdk1<span class="number">.8</span><span class="number">.0</span>_60\jre</span><br></pre></td></tr></table></figure></p>
+<h2 id="Maven的项目目录结构">Maven的项目目录结构</h2><p>|-src/                        (maven项目根目录)<br>|—main/                   (maven项目主体文件目录根)<br>|——java                 (maven项目源代码目录)<br>|———package       (maven项目源代码包结构)<br>|——resources        (maven项目资源目录)<br>|—test/                   (maven项目测试目录根)<br>|——java                 (maven项目测试代码目录)<br>|———package       (maven项目测试代码包结构)<br>|——resources        (maven项目测试资源目录)<br>|-pom.xml               (maven的POM文件)<br>|-target/                   (maven输出的目录根)<br>|—classes             (maven项目主体输出目录)<br>|—test-classes            (maven项目测试输出目录)</p>
+<h2 id="Maven常用命令">Maven常用命令</h2><p>查看maven版本<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>-v</span><br></pre></td></tr></table></figure></p>
+<p>编译pom项目文件<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>compile</span><br></pre></td></tr></table></figure></p>
+<p> 执行测试用例<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>test</span><br></pre></td></tr></table></figure></p>
+<p>将编译后的代码打包<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn <span class="package"><span class="keyword">package</span></span></span><br></pre></td></tr></table></figure></p>
+<p>删除target目录(编译pom之后产生的目录)<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>clean</span><br></pre></td></tr></table></figure></p>
+<p>安装jar包到本地仓库中<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>install</span><br></pre></td></tr></table></figure></p>
+<h2 id="archetype插件创建maven目录结构">archetype插件创建maven目录结构</h2><p> 隐式创建目录，可以根据maven的提示一步一步生成maven目录<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>archetype:generate</span><br></pre></td></tr></table></figure></p>
+<p>显示创建目录，指定<strong>groupId</strong>、<strong>artifactId</strong>、<strong>version</strong>、<strong>package</strong>的值来创建对应的目录<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=com<span class="class">.xxx</span><span class="class">.xxx</span> -DartifactId=xxx-demo -Dversion=<span class="number">1.0</span>.<span class="number">0</span>SNAPSHOT -Dpackage:com<span class="class">.xxx</span><span class="class">.xxx-</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>groupId:</strong>为项目的标识，一般配置为公司的网址反写对应的包名+项目名称<br><strong>artifactId:</strong>为项目模块标识，一般配置为项目名称+模块名称<br><strong>version:</strong>当前项目的版本号(x.x.x[VERSION])<br>第一为项目的大版本号<br>第二位为项目的分支版本号<br>第三位为项目的小版本号<br><strong>snapshot</strong> 快照版本<br>   <strong>alpha</strong>    内部测试版本<br>   <strong>beta</strong> 公测版本<br>   <strong>Release</strong> 稳定版本<br>   <strong>GA</strong>       正式发布版本</p>
+<h2 id="maven中的坐标和仓库">maven中的坐标和仓库</h2><h3 id="坐标">坐标</h3><p><strong>groupId</strong>、<strong>artifactId</strong>、<strong>version</strong>三个名称是项目的坐标，唯一标识项目</p>
+<h3 id="仓库">仓库</h3><p>1.本地仓库<br>    本地仓库是存在到本地电脑的第三方jar，通过<code>mvn install</code>命令安装的<code>maven项目</code>也会被装到<code>本地仓库</code>中，本地仓库的路径通过<code>maven配置文件</code><strong>setting.xml</strong>中的<code>localRepository</code>去指定。<br>如果项目中引用到某一个坐标，<code>maven</code>会首先到<code>远程仓库</code>里面找，如果找不到，maven会到远程仓库中下载，并且把下载的版本保存在<code>本地仓库</code>当中。<br>2.远程仓库<br>远程仓库存放着一些开源软件所提交的<code>maven项目托管</code>，maven的世界中央仓库<code>地址:http://search.maven.org/。
+远程仓库的地址可以在</code>maven配置文件<code>**setting.xml**中设置</code>mirrors<code>标签可以指定远程仓库镜像。
+3.镜像仓库</code>世界中央仓库<code>的备份，有的时候国内访问国外或是访问不了，或是网速慢，国内也有一些maven远程仓库去定时更新</code>maven中央仓库<code>的项目，我们可以通过镜像仓库去下载第三方的</code>maven项目`。</p>
+<p>国内的镜像仓库:htt·p://mvnrepository.com/</p>
+</blockquote>
+<h2 id="Maven的生命周期和插件">Maven的生命周期和插件</h2><p><strong>一个项目的完整流程</strong><br>maven完成了一个项目完整生命周期的管理</p>
+<blockquote>
+<p>clean 、 compile、test、package、install、deploy<br>清理编译、测试、打包、集成测试、验证、部署</p>
+</blockquote>
+<p><strong>maven生命周期</strong><br> <strong>clean</strong>          清理项目<br>    pre-clean 执行清理前的工作<br>    clean  清理上一次构件生成的所有文件<br>    post-clean 执行清理后的文件<br><strong>default</strong>     构建项目(最核心)<br>    <strong>compile</strong>  <strong>test</strong>  <strong>package</strong> <strong>install</strong><br><strong>site</strong>           生成项目站点<br>    pre-site 在生成项目站点前要完成的工作<br>        <strong>site</strong>    生成项目的站点文档<br>    post-site 在生成项目站点后要完成的工作<br>    site-deploy 发布生成的站点的到服务器上</p>
+<h2 id="pom-xml_解析">pom.xml 解析</h2><p><code>pom.xml</code>里面是日常开发当中用的最多的，我们通过这个pom文件我们可以指定项目所需的依赖范围，项目的坐标等关键信息。<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">modelVersion    指定pom文件的版本。</span><br><span class="line">groupId         项目的主标识</span><br><span class="line">artifactId      项目名称+模块名</span><br><span class="line">version         项目版本</span><br><span class="line">packaging       打包方式(jar|<span class="string">war</span>|<span class="string">zip</span>|<span class="string">pom),默认为jar</span><br><span class="line">name            项目的描述名称</span><br><span class="line">url             项目的地址</span><br><span class="line">description     项目的描述</span><br><span class="line">developers      项目的开发人员列表</span><br><span class="line">licenses        使用的开源许可框架</span><br><span class="line">orgainzation    组织信息</span><br><span class="line">properties      项目的配置信息</span><br><span class="line">dependencies    项目依赖的集合</span><br><span class="line">dependencyManagement 依赖管理</span><br><span class="line">build           项目构建支持</span><br><span class="line">plugins         项目构建所使用的插件</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="依赖的范围">依赖的范围</h3><p>在项目依赖当中，有些依赖并不是我们在项目的整个周期中都需要的，因此我们可以通过<strong>scope</strong>指定项目所依赖的范围，通过<code>scope</code>指定之后，这个依赖会在特定的阶段加入特定的<code>classpath</code>路径当中。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在上述依赖例子中我们用到<strong>junit</strong>，我们只需要在测试的时候用到，因此我们设定junit的scope为test<br><code>scope可设置的值</code></p>
+<blockquote>
+<p><strong>test</strong>:测试范围内的classpath<br><strong>complie</strong>(默认级别):编译、测试、运行 classpath都有效<br><strong>provided</strong>:在编译和测试时的classpath有效，最后运行的classpath时候无效<br><strong>runtime</strong>:测试和运行的classpath中有效<br><strong>test</strong>:测试的classpath<br><strong>system</strong>:与provided一样，移植性较差<br><strong>import</strong>:只用在dependencyManagement中，表示是其他项目中的模块</p>
+</blockquote>
+<h3 id="依赖的传递">依赖的传递</h3><p><code>maven</code>的依赖是具有传递性的，例如现在有三个模块<strong>ModuleA</strong>,<strong>ModuleB</strong>,<strong>ModuleC</strong>,其中<strong>ModuleA</strong>引用了<code>Junit</code>，<strong>ModuleB</strong>引用了<strong>ModuleA</strong>,当<strong>ModuleC</strong>依赖<strong>ModuleB</strong>的时候就会默认将<strong>ModuleA</strong>所应用的<code>Junit</code>给引用进来。<br><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ModuleA</span> -&gt; junit</span><br><span class="line"><span class="type">ModuleB</span>-&gt;<span class="type">ModuleA</span></span><br><span class="line"><span class="type">ModuleC</span>-&gt;<span class="type">ModuleB</span>  <span class="type">ModuleC</span> 应用<span class="type">Junit</span></span><br></pre></td></tr></table></figure></p>
+<p>这种依赖的关系可以通过<strong>exclusions</strong>来排除<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>ModuleB <span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>ModuleB <span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>通过<code>exclusions</code>之后<code>ModuleC</code>模块在依赖<code>ModuleB</code>的时候就不会引用<code>junit</code>了</p>
+</blockquote>
+<h3 id="依赖的冲突">依赖的冲突</h3><p>当<strong>ModuleA</strong>依赖<code>commons-io</code>的2.0版本，<strong>ModuleB</strong>依赖<code>commons-io</code>的2.4版本的同时，<strong>ModuleC</strong>同时依赖<strong>ModuleA</strong>和<strong>ModuleB</strong>，这个时候<strong>ModuleC</strong>的依赖就会产生冲突，maven在产生冲突的时候有两种优先方式来处理。<br>1.短路优先<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A-&gt;B-&gt;<span class="function"><span class="title">C-X</span><span class="params">(jar)</span></span></span><br><span class="line">A-&gt;D-&gt;<span class="function"><span class="title">X</span><span class="params">(jar)</span><span class="params">(优先选择)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>2.先声明先优先<br>如果路径相同，则看POM文件中谁先声明，就先解析谁</p>
+<h3 id="聚合和继承">聚合和继承</h3><p>当几个<strong>Module</strong>的相互引用关系需要被调用的时候，通常需要分别依赖其他的几个模块，或是多个模块同时引用同一模块的时候，我们往往要在POM文件中写入冗余的依赖关系，<strong>Maven</strong>提供了聚合和继承两种方式来处理这种冗余。</p>
+<blockquote>
+<p>无论是聚合和继承，都需要将<code>&lt;packaging&gt;</code>中的属性设置为<code>pom</code>,通过<code>maven</code>的<code>install</code>命令将聚合或是继承之后的坐标安装至本地仓库当中，这样就可以对外提供一次的依赖达到多次依赖的效果。</p>
+</blockquote>
+<p><code>1.聚合</code><br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;modules&gt;</span><br><span class="line">    &lt;<span class="class"><span class="keyword">module</span>&gt;../<span class="title">hongxin</span>-<span class="title">bg</span><span class="inheritance">&lt;</span>/<span class="title">module</span>&gt;</span></span><br><span class="line">    &lt;<span class="class"><span class="keyword">module</span>&gt;../<span class="title">hongxin</span>-<span class="title">nange</span><span class="inheritance">&lt;</span>/<span class="title">module</span>&gt;</span></span><br><span class="line">    &lt;<span class="class"><span class="keyword">module</span>&gt;../<span class="title">hongxing</span>-<span class="title">shanji</span><span class="inheritance">&lt;</span>/<span class="title">module</span>&gt;</span></span><br><span class="line">&lt;<span class="regexp">/modules&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>2.继承</code><br><strong>第一步</strong>，父pom设置<code>dependencyManagement</code>指定所管理依赖<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">junit.version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="title">junit.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">version</span>&gt;</span>$&#123;junit.version&#125;<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>将<code>maven</code>共用的一些属性设置在<code>properties</code>文件中，在依赖的时候可以根据<code>${}</code>表达式的方式来获取全局的执行配置，达到全局配置的目的。<br><strong>第二步</strong>，子pom设置parent指定父pom<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.hongxing.test<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>hongxing-parent<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>子<code>pom</code>在引入依赖的时候就可以通过<code>groupId</code>和<code>artifactId</code>的方式来引入父pom中所声明的<code>junit</code>依赖了，而不要声明版本号。</p>
+</blockquote>
+<h3 id="Maven的插件"><a href="http://maven.apache.org/plugins/index.html" target="_blank" rel="external">Maven的插件</a></h3><p><code>maven</code>通过插件的方式可以指定在<code>maven</code>的生命周期阶段加入扩展的功能，这里以<code>maven</code>的官方插件<a href="http://maven.apache.org/plugins/maven-source-plugin/" target="_blank" rel="external">source</a>来作为<code>maven</code>插件的演示<code>maven插件</code>。<a href="http://maven.apache.org/plugins/maven-source-plugin/" target="_blank" rel="external">source</a>插件是在项目的打包过程中将<code>maven</code>的主体代码生成源文件的<code>resource</code>包。<br><code>maven插件</code>是声明在pom文件的bulid标签下的,在配置中我们先声明maven的插件为source，这里引入source的2.4插件。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.4<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">build</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后我们通过<code>execution</code>声明插件的运行时机为<code>package</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.4<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">executions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="title">execution</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="title">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="title">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="title">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最后我们通过<code>goals</code>为该插件指定在运行的时候所执行的目标为<code>jar-no-fork</code>,也就是在打包的时候只把当前项目的源文件给导出为源文件<code>jar</code>包。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.4<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">executions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">execution</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="title">phase</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="title">goal</span>&gt;</span>jar-no-fork<span class="tag">&lt;/<span class="title">goal</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="title">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Maven构建Web项目">Maven构建Web项目</h2><p><code>Maven</code>构建<code>Web项目</code>只是在<code>maven</code>的<strong>main</strong>目录下新建了<strong>web-app</strong>目录，该目录下存放了Web相关的目录信息，构建Web项目时候我们要在POM文件中加入Servlet相关的POM依赖。这里的依赖范围要设置为<code>provided</code>,指明是在<strong>编译</strong>和**测试阶段才引入这个依赖。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在声明Web项目的时候要将POM的<code>packaging</code>设置为<strong>war</strong>,这样在打包的时候就会产生Web容器所识别的war包。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="title">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>另外我们要以插件的方式引入<code>Web容器</code>。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.mortbay.jetty<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>jetty-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">version</span>&gt;</span>8.1.16.v20140903<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样我们通过<code>mvn jetty:run</code>命令就可以以<code>jetty</code>的方式来启动我们的<code>jetty容器</code>了。但是这样比较麻烦，我们可以指定<code>jetty插件</code>在项目打包完毕之后就启动，我们可以给<code>jetty插件</code>指定打包完成之后需要执行的目标。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.mortbay.jetty<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>jetty-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>8.1.16.v20140903<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">executions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">execution</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 在打包成功之后运行jetty:run 运行jetty服务 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="title">phase</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="title">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="title">goal</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="title">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样我们只需要运行<code>mvn package</code>命令就将我们的生成的<code>war包</code>放到<code>Web容器</code>下，并启动<code>Web容器</code>。<br>如果我们要换其他的<code>Web容器</code>，如<code>tomcat</code>，我们只需将jetty插件换成<a href="http://tomcat.apache.org/maven-plugin.html" target="_blank" rel="external">tomcat件</a>即可，不需做其他改动。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结</h2><p>通过以上的总结，我们可以看到，在引入<code>maven管理</code>之后，整个项目的的依赖关系通过<code>POM文件</code>可以看得一清二楚，依赖的冲突、依赖的范围、依赖的聚合和继承可以让我们更高效的组织POM文件，让我们从<code>jar</code>的复制，解决jar包冲突，右键编译，运行，生成war包、部署等杂乱无章的事情中解脱出来了，从而真正的关心我们开发的模块代码该怎么写。在团队协作方面，每个人负责一个项目模块，用maven进行管理并最后组织起来不失为一种提升效率的方式，不得不说，<strong>maven是项目开发的利器</strong>。</p>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+
+<nav id="article-nav">
+  
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2016/01/22/hello-world/">
+        Hello World
+      </a>
+    </div>
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/11/29/Java设计模式之简单工厂模式/">
+        Java设计模式之简单工厂模式
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven的安装"><span class="toc-number">1.</span> <span class="toc-text">Maven的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven的项目目录结构"><span class="toc-number">2.</span> <span class="toc-text">Maven的项目目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven常用命令"><span class="toc-number">3.</span> <span class="toc-text">Maven常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#archetype插件创建maven目录结构"><span class="toc-number">4.</span> <span class="toc-text">archetype插件创建maven目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven中的坐标和仓库"><span class="toc-number">5.</span> <span class="toc-text">maven中的坐标和仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坐标"><span class="toc-number">5.1.</span> <span class="toc-text">坐标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓库"><span class="toc-number">5.2.</span> <span class="toc-text">仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven的生命周期和插件"><span class="toc-number">6.</span> <span class="toc-text">Maven的生命周期和插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pom-xml_解析"><span class="toc-number">7.</span> <span class="toc-text">pom.xml 解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖的范围"><span class="toc-number">7.1.</span> <span class="toc-text">依赖的范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖的传递"><span class="toc-number">7.2.</span> <span class="toc-text">依赖的传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖的冲突"><span class="toc-number">7.3.</span> <span class="toc-text">依赖的冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚合和继承"><span class="toc-number">7.4.</span> <span class="toc-text">聚合和继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven的插件"><span class="toc-number">7.5.</span> <span class="toc-text">Maven的插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven构建Web项目"><span class="toc-number">8.</span> <span class="toc-text">Maven构建Web项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/12/01/学习maven构建项目/" data-title="学习Maven构建项目" data-url="http://freejs.cn/2015/12/01/学习maven构建项目/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"rosan"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#ds-thread" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    
+    <div  class="post-nav-button">
+    <a href="/2016/01/22/hello-world/" title="上一篇: Hello World">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="/2015/11/29/Java设计模式之简单工厂模式/" title="下一篇: Java设计模式之简单工厂模式">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+        
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Rosan
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    /* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   after-footer.ejs                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/11/15 17:07:54 by anonymous         #+#    #+#             */
+/*   Updated: 2015/11/16 13:21:08 by anonymous        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var backgroundList = ["url(/background/bg-1.jpg)", "url(/background/bg-2.jpg)","url(/background/bg-3.jpg)","url(/background/bg-4.jpg)","url(/background/bg-5.jpg)"];
+  var background = Math.floor(Math.random() * backgroundList.length);
+  $("body").css({"background": backgroundList[background], "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  </div>
+</body>
+</html>
